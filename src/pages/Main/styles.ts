@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const MainContainer = styled.main`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
+    padding-top: 100px;
     align-items: center;
     background-color: #EAEAEA;
     width: 100vw;
-    height: 800px;
+    height: fit-content;
     border-radius: 50px 50px 0 0;
     position: relative;
     top: -100px;

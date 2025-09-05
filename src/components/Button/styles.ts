@@ -15,7 +15,7 @@ export const ButtonSearch = styled.button`
     top: 14px;
 
     &:hover {
-        background-color: #6488f0;
+        background-color: #6F43FF;
         cursor: pointer;
     }
 `;

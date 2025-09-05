@@ -18,5 +18,6 @@ export const FooterBase = styled.footer`
     span {
         margin-left: auto;
         font-weight: bold;
+        padding-bottom: 30px;
     }
 `;

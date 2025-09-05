@@ -6,8 +6,8 @@ export const Card = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    width: 240px;
-    height: 190px;
+    min-width: 280px;
+    height: 210px;
     background: #6438F0;
     background: linear-gradient(180deg,rgba(100, 56, 240, 1) 30%, rgba(71, 181, 122, 1) 100%);
     border-radius: 50px;
@@ -31,6 +31,6 @@ export const Title = styled.h1`
 
 export const Number = styled.span`
     color: #A8FFB2;
-    font-size: 50px;
+    font-size: 40px;
     margin-top: 1rem;
 `;

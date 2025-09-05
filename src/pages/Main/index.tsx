@@ -1,9 +1,11 @@
 import { IoSearchOutline } from "react-icons/io5";
-import Button from "../Button";
-import SearchClient from "../SearchClient";
+
+import Button from "../../components/Button";
+import SearchClient from "../../components/SearchClient";
+
 import { MainContainer } from "./styles";
-import { InfoNCMSearch } from "../InfoNCMSearch";
-import { Footer } from "../Footer";
+import { InfoNCMSearch } from "../../components/InfoNCMSearch";
+import { Footer } from "../../components/Footer";
 
 export function Main() {
     return (
