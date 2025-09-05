@@ -18,6 +18,6 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         background: #1E1E1E;
         background: linear-gradient(180deg,rgba(30, 30, 30, 1) 8%, rgba(64, 34, 115, 1) 100%);
-        overflow-x: hidden;
+        overflow: hidden;
     }
 `;

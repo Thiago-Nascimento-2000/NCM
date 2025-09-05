@@ -3,21 +3,29 @@ import styled from "styled-components";
 export const FooterBase = styled.footer`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     align-items: center;
-    justify-content: end;
-    width: 80%;
-    height: 100px;
-    z-index: 25;
+    justify-content: center;
+    width: 100vw;
+    z-index: 50;
+    background-color: #EAEAEA;
 
-    hr {
-        width: 100%;
-        background-color: #CECECE;
-    }
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 100px;
+        gap: 1.5rem;
 
-    span {
-        margin-left: auto;
-        font-weight: bold;
-        padding-bottom: 30px;
+        hr {
+            width: 100%;
+            background-color: #CECECE;
+        }
+
+            span {
+                font-weight: bold;
+                margin-left: auto;
+            }
     }
 `;
