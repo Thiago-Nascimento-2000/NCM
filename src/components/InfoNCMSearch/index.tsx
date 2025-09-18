@@ -28,9 +28,9 @@ export function InfoNCMSearch() {
 
     return (
         <ContainerInfoNCM>
-            <ContentInfoNCM>NCM: {ncmData?.Codigo ?? ''}</ContentInfoNCM>
-            <ContentInfoNCM>Descricao: {ncmData?.Descricao ?? ''}</ContentInfoNCM>
-            <ContentInfoNCM>Data Inicio: {ncmData?.Data_Inicio ?? ''}</ContentInfoNCM>
+            <ContentInfoNCM>NCM: <span>&nbsp; {ncmData?.Codigo ?? ''}</span></ContentInfoNCM>
+            <ContentInfoNCM>Descricao: <span>&nbsp; {ncmData?.Descricao ?? ''}</span></ContentInfoNCM>
+            <ContentInfoNCM>Data Inicio: <span>&nbsp; {ncmData?.Data_Inicio ?? ''}</span></ContentInfoNCM>
         </ContainerInfoNCM>
     );
 }

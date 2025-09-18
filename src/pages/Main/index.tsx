@@ -8,9 +8,10 @@ export function Main() {
   return (
     <MainContainer>
       <Container>
-        <div style={{ width: '100%'}}>
+        <div style={{ width: '100%' }}>
           <SearchClient
             label="Consultar NCM"
+            type='number'
             name="Insira o NCM"
           />
           <InfoNCMSearch />

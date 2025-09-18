@@ -4,14 +4,17 @@ type Props = {
   icon: React.ReactNode;
   name: string;
   numberinfo: string;
+  style?: React.CSSProperties;
 }
 
-function CardInfo({icon, name, numberinfo}: Props) {
+function CardInfo({ icon, name, numberinfo, style }: Props) {
   return (
     <Card>
+      <div>
         <Icon>{icon}</Icon>
-        <Title>{name}</Title>
-        <Number>{numberinfo}</Number>
+      </div>
+      <Title>{name}</Title>
+      <Number style={style}>{numberinfo}</Number>
     </Card>
   )
 }

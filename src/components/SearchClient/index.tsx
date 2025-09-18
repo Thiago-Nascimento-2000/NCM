@@ -5,9 +5,10 @@ type Props = {
     name: string;
     label: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    type: string;
 }
 
-function SearchClient({ name, label }: Props) {
+function SearchClient({ name, label, type }: Props) {
     const { ncm, setNcm } = useNcm();
     console.log("Input NCM", ncm);
 
@@ -17,6 +18,7 @@ function SearchClient({ name, label }: Props) {
             <Input
                 placeholder={name}
                 value={ncm}
+                type={type}
                 onChange={(e) => setNcm(e.target.value)}
             />
         </div>

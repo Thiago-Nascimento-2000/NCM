@@ -1,6 +1,3 @@
-
-import { Ncm } from '../../ConsumoNCM/ConsumoNCM';
-import { useNcm } from '../Contecto/useNcm';
 import { ButtonSearch, Icon, Title } from './styles'
 
 type Props = {
@@ -9,19 +6,10 @@ type Props = {
     onClick?: () => void;
 }
 
-export default function Button({ name, icon }: Props) {
-    const { ncm } = useNcm();
-
-    async function sendNcmApi(): Promise<void> {
-        try {
-            Ncm(ncm);
-        } catch (error) {
-            console.log("Error", error);
-        }
-    }
+export default function Button({ name, icon, onClick }: Props) {
 
     return (
-        <ButtonSearch onClick={() => sendNcmApi()}>
+        <ButtonSearch onClick={onClick}>
             <Title>{name}</Title>
             <Icon>{icon}</Icon>
         </ButtonSearch>

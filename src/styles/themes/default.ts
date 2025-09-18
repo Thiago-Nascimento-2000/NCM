@@ -15,9 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     body {
         display: flex;
         width: 100vw;
-        height: 100vh;
-        background: #1E1E1E;
-        background: linear-gradient(180deg,rgba(30, 30, 30, 1) 8%, rgba(64, 34, 115, 1) 100%);
-        overflow-x: hidden;
+        height: 600px;
+        background: #1F2126;
+        background: linear-gradient(180deg, rgba(31, 33, 38, 1) 0%, rgba(60, 121, 62, 1) 100%);
+        overflow: hidden;
     }
 `;

@@ -27,8 +27,8 @@ function Header() {
         </Nav>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '1rem', padding: '1rem 0 1rem 0', borderRadius: '20px', gap: '1rem' }}>
           <CardInfo icon={<LuUser />} name='Clientes' numberinfo='47' />
-          <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo='04/09/2025' />
-          <CardInfo icon={<GoRocket />} name='Lorem Ipsun' numberinfo='25' />
+          <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo='04/09/25'/>
+          <CardInfo icon={<GoRocket />} name='Sem Dados' numberinfo='0'/>
         </div>
       </Container>
     </div>

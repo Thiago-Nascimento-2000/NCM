@@ -15,6 +15,7 @@ export const ButtonSearch = styled.button`
     &:hover {
         background-color: #39a36bff;
         cursor: pointer;
+        transition: all 0.3s ease;
     }
 `;
 

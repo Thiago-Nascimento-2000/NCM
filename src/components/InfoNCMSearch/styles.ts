@@ -15,14 +15,21 @@ export const ContainerInfoNCM = styled.div`
 
 export const ContentInfoNCM = styled.div`
     display: flex;
-    align-items: center;
     padding-left: 1rem;
     background-color: #eaeaea;
     border-radius: 10px;
     min-width: 100%;
-    height: 45px;
+    height: 40px;
     font-size: 20px;
     font-weight: 600;
     color: #272727;
-    padding: 2rem;
+    padding: 0.5rem;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    span {
+        text-overflow: ellipsis;
+        width: 800px;
+    }
 `
