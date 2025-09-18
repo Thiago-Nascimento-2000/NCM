@@ -1,16 +1,36 @@
+import { useEffect, useState } from 'react';
 import { ContainerInfoNCM, ContentInfoNCM } from './styles'
+import { Ncm } from '../../ConsumoNCM/ConsumoNCM';
+import { useNcm } from '../Contecto/useNcm';
 
-type Props = {
-    name: string;
-    value: React.ReactNode;
-}
+type NCMData = {
+  Codigo: string;
+  Descricao: string;
+  Data_Inicio: string;
+};
 
-export function InfoNCMSearch({name, value}: Props){
+export function InfoNCMSearch() {
+    const [ncmData, setNcmData] = useState<NCMData | null>(null);
+    const { ncm } = useNcm();
+
+    useEffect(() => {
+        async function fetchData() {
+            if(ncm.length == 8){
+                const response = await Ncm(ncm);
+                setNcmData(response);
+            } else {
+                setNcmData(null);
+            }
+        }
+
+        fetchData();
+    }, [ncm]);
+
     return (
         <ContainerInfoNCM>
-            <ContentInfoNCM>{name='NCM:'} {value}</ContentInfoNCM>
-            <ContentInfoNCM>{name='Descrição:'} {value}</ContentInfoNCM>
-            <ContentInfoNCM>{name='Data de Inicio:'} {value}</ContentInfoNCM>
+            <ContentInfoNCM>NCM: {ncmData?.Codigo ?? ''}</ContentInfoNCM>
+            <ContentInfoNCM>Descricao: {ncmData?.Descricao ?? ''}</ContentInfoNCM>
+            <ContentInfoNCM>Data Inicio: {ncmData?.Data_Inicio ?? ''}</ContentInfoNCM>
         </ContainerInfoNCM>
     );
 }

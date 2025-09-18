@@ -9,13 +9,11 @@ export const ButtonSearch = styled.button`
     height: 60px;
     border-radius: 10px;
     border: none;
-    background-color: #6438f0;
+    background-color: #3a9062ff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    position: relative;
-    top: 14px;
 
     &:hover {
-        background-color: #6F43FF;
+        background-color: #39a36bff;
         cursor: pointer;
     }
 `;

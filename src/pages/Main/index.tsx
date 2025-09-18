@@ -1,19 +1,21 @@
-import { IoSearchOutline } from "react-icons/io5";
-
-import Button from "../../components/Button";
 import SearchClient from "../../components/SearchClient";
-
-import { MainContainer } from "./styles";
 import { InfoNCMSearch } from "../../components/InfoNCMSearch";
+import { Container } from "../../components/Container/Container";
+import { MainContainer } from "./styles";
 
 export function Main() {
-    return (
-        <MainContainer>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
-                    <SearchClient label='Consultar NCM' name='Insira o NCM' />
-                    <Button name="Consultar" icon={<IoSearchOutline />} />
-                </div>
-                <InfoNCMSearch name={""} value={undefined} />
-        </MainContainer>
-    );
+
+  return (
+    <MainContainer>
+      <Container>
+        <div style={{ width: '100%'}}>
+          <SearchClient
+            label="Consultar NCM"
+            name="Insira o NCM"
+          />
+          <InfoNCMSearch />
+        </div>
+      </Container>
+    </MainContainer>
+  );
 }

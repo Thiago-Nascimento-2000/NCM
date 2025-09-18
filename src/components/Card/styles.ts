@@ -8,10 +8,14 @@ export const Card = styled.div`
     gap: 0.5rem;
     min-width: 280px;
     height: 210px;
-    background: #6438F0;
-    background: linear-gradient(180deg,rgba(100, 56, 240, 1) 30%, rgba(71, 181, 122, 1) 100%);
+
+    background: rgba(41, 71, 60, 0.71);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.7px);
+    -webkit-backdrop-filter: blur(3.7px);
+    border: 1px solid rgba(41, 71, 60, 0.3);
     border-radius: 50px;
-    margin: 2rem;
     z-index: 10;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 `;
@@ -30,7 +34,8 @@ export const Title = styled.h1`
 
 
 export const Number = styled.span`
-    color: #A8FFB2;
+    color: #31cc7aff;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     font-size: 40px;
     margin-top: 1rem;
 `;
