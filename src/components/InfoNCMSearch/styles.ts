@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const ContainerInfoNCM = styled.div`
     display: flex;
+    min-width: 60%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     background-color: #FFF;
     border-radius: 10px;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 `

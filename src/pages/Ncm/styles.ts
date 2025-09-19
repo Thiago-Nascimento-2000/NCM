@@ -5,8 +5,7 @@ export const MainContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    padding: 150px 0 0px 0;
+    padding: 150px 0 0 0;
     align-items: center;
     background-color: #EAEAEA;
     border-radius: 50px 50px 0 0;
@@ -23,4 +22,10 @@ export const MainContainer = styled.div`
             margin-left: -19.5px;
         }
     }
+        .ncm {
+            display: flex;
+            align-items: end;
+            gap: 1rem;
+            width: 100%;
+        }
 `;

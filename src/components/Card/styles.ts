@@ -8,17 +8,17 @@ export const Card = styled.div`
     gap: 0.5rem;
     min-width: 280px;
     height: 210px;
+    border-radius: 20px;
+    z-index: 10;
 
     background: #1F2126;
     background: linear-gradient(180deg,rgba(31, 33, 38, 0.50) 10%, rgba(71, 181, 122, 1) 100%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.7px);
     -webkit-backdrop-filter: blur(3.7px);
-    border-radius: 20px;
-    z-index: 10;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
-    div {
+    .containerIcon {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -32,12 +32,15 @@ export const Card = styled.div`
 `;
 
 export const Icon = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 30px;
     color: #FFF;
     top: 10px;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.span`
     color: #FFF;
     font-size: 25px;
     font-weight: 500;

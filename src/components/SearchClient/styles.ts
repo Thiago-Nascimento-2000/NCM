@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-    width: auto;
+    width: 100%;
     height: 60px;
     border-radius: 10px;
     border: none;
@@ -19,4 +19,3 @@ export const Label = styled.label`
         font-style: italic;
     }
 `;
-

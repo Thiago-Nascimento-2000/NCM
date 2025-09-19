@@ -6,7 +6,7 @@ type Props = {
     onClick?: () => void;
 }
 
-export default function Button({ name, icon, onClick }: Props) {
+export function Button({ name, icon, onClick }: Props) {
 
     return (
         <ButtonSearch onClick={onClick}>

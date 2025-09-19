@@ -9,6 +9,7 @@ export const Nav = styled.nav`
     height: 80px;
     border-radius: 100px;
     margin-top: 1rem;
+    flex-wrap: wrap;
 
 
     background: rgba(41, 71, 60, 0.61);

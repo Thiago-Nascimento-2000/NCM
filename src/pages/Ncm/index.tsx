@@ -1,56 +1,36 @@
 import { BiMailSend } from "react-icons/bi";
-import Button from "../../components/Button";
+
+import { Button } from "../../components/Button";
 import { MainContainer } from "./styles";
 import { InputSearchCliente } from "../../components/InputSearchClient";
-import { Container } from "../../components/Container/Container";
-import { useEffect, useState } from "react";
+import { Container } from "../../components/Container";
+
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { useSearchApi } from "../../hooks/useSearchApi";
 
 
 export function Ncm() {
-    const [searchData, setSearchData] = useState<string[]>([]);
+    
     const [search, setSearch] = useState('');
     const [email, setEmail] = useState('');
     const URL = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
 
-    useEffect(() => {
-        if (search !== '') {
-            fetch(URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log("API DATA:", data);
-                    if (Array.isArray(data.names)) {
-                        setSearchData(data.names);
-                    } else {
-                        setSearchData([]);
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    setSearchData([]);
-                });
-        }
-    }, [search]);
+    const { searchData } = useSearchApi(undefined, URL);
 
     async function SendEmailClient(search: string, email: string) {
-        const URL = 'http://192.168.51.252:5000/cliente';
 
         if (!search && !email) {
-            toast.warn('Preencha os campos loja e e-mail!', { position: 'top-center', autoClose: 2000 });
+            toast.warn('Preencha os campos loja e e-mail!', { position: 'top-center', autoClose: 4000 });
             return;
         }
         if (!search) {
-            toast.warn('Preencha o campo loja antes de continuar!', { position: 'top-center', autoClose: 2000 });
+            toast.warn('Preencha o campo loja antes de continuar!', { position: 'top-center', autoClose: 4000 });
             return;
         }
         if (!email) {
-            toast.warn('Preencha o campo e-mail antes de continuar!', { position: 'top-center', autoClose: 2000 });
+            toast.warn('Preencha o campo e-mail antes de continuar!', { position: 'top-center', autoClose: 4000 });
             return;
         }
 
@@ -58,7 +38,7 @@ export function Ncm() {
 
         try {
 
-            toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center'});
+            toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center' });
 
             const response = await fetch(URL, {
                 method: 'POST',
@@ -75,18 +55,17 @@ export function Ncm() {
 
             const data = await response.json();
             console.log('EMAIL ENVIADO!', data);
-            toast.success('Email enviado para sua caixa de entrada!', { position: 'top-center', autoClose: 2000 });
+            toast.success('Email enviado para sua caixa de entrada!', { position: 'top-center', autoClose: 4000 });
 
         } catch (error) {
             if (toastId) toast.dismiss(toastId);
             console.error('ERRO NA REQUISIÇÃO', error);
-            toast.error('Falha no processo de consulta dos ncms invalidos na loja, verifique o nome e tente novamente!', { position: 'top-center', autoClose: 5000 });
+            toast.error('Falha no processo de consulta dos ncms invalidos na loja!', { position: 'top-center', autoClose: 5000 });
         }
     }
 
     const handleChangeClient = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
-        setSearchData([]);
     }
 
     const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,41 +73,51 @@ export function Ncm() {
     }
 
     return (
-        <MainContainer>
-            <Container>
-                <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'flex-end' }}>
-                    <div style={{ position: 'relative' }}>
+        <Container>
+            <MainContainer>
+                <div className="Width">
+
+
+
+
+                    <div className="ncm">
+                        <div style={{ position: 'relative' }}>
+                            <InputSearchCliente
+                                name="Selecione o cliente"
+                                label='Cliente'
+                                type="text"
+                                onChange={handleChangeClient}
+                                value={search}
+                            />
+                            {search && (
+                                <div style={{ backgroundColor: 'white', width: '100%', maxHeight: '250px', overflow: 'hidden', position: 'absolute', borderRadius: '10px 10px 10px 10px', marginTop: '0.3rem', padding: '1rem' }}>
+                                    {searchData
+                                        .filter((cliente) => cliente.toLowerCase().includes(search.toLowerCase()))
+                                        .map((item, index) => (
+                                            <p style={{ padding: '0.3rem', cursor: 'pointer' }} key={index}>
+                                                {item}
+                                            </p>
+                                        ))}
+                                </div>
+                            )}
+                        </div>
+
+
                         <InputSearchCliente
-                            name="Selecione o cliente"
-                            label='Cliente'
-                            type="text"
-                            onChange={handleChangeClient}
-                            value={search}
+                            name="Insira o e-mail"
+                            type="email"
+                            label='Email'
+                            onChange={handleChangeEmail}
+                            value={email}
                         />
-                        {search && (
-                            <div style={{ backgroundColor: 'white', width: '100%', minHeight: '20px', overflow: 'hidden', position: 'absolute', borderRadius: '10px 10px 10px 10px', marginTop: '0.3rem', padding: '1rem' }}>
-                                {searchData
-                                    .filter((cliente) => cliente.toLowerCase().includes(search.toLowerCase()))
-                                    .map((item, index) => (
-                                        <p style={{ padding: '0.3rem', cursor: 'pointer' }} key={index}>
-                                            {item}
-                                        </p>
-                                    ))}
-                            </div>
-                        )}
+                        <Button
+                            name='Enviar'
+                            icon={<BiMailSend />}
+                            onClick={() => SendEmailClient(search, email)}
+                        />
                     </div>
-                    <InputSearchCliente
-                        name="Insira o e-mail"
-                        type="email"
-                        label='Email'
-                        onChange={handleChangeEmail}
-                        value={email}
-                    />
-                    <Button
-                        name='Enviar'
-                        icon={<BiMailSend />}
-                        onClick={() => SendEmailClient(search, email)}
-                    />
+
+
 
                     <div className="help-list">
                         <h2>Passos para Realizar o Processo</h2>
@@ -141,7 +130,8 @@ export function Ncm() {
                         </ol>
                     </div>
                 </div>
-            </Container>
-        </MainContainer>
+
+            </MainContainer>
+        </Container>
     );
 }

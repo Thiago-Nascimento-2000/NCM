@@ -4,19 +4,16 @@ type Props = {
   icon: React.ReactNode;
   name: string;
   numberinfo: string;
-  style?: React.CSSProperties;
 }
 
-function CardInfo({ icon, name, numberinfo, style }: Props) {
+export function CardInfo({ icon, name, numberinfo }: Props) {
   return (
     <Card>
-      <div>
+      <div className='containerIcon'>
         <Icon>{icon}</Icon>
       </div>
       <Title>{name}</Title>
-      <Number style={style}>{numberinfo}</Number>
+      <Number>{numberinfo}</Number>
     </Card>
   )
 }
-
-export default CardInfo

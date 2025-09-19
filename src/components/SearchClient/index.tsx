@@ -1,3 +1,4 @@
+
 import { useNcm } from '../Contecto/useNcm';
 import { Input, Label } from "./styles";
 
@@ -8,12 +9,12 @@ type Props = {
     type: string;
 }
 
-function SearchClient({ name, label, type }: Props) {
+export function SearchClient({ name, label, type }: Props) {
     const { ncm, setNcm } = useNcm();
     console.log("Input NCM", ncm);
 
     return (
-        <div style={{ display: 'flex', flex: '1', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+            <div style={{display: 'flex', flex: '1', flexDirection: 'column', justifyContent: 'center'}}>
             <Label>{label}</Label>
             <Input
                 placeholder={name}
@@ -21,8 +22,6 @@ function SearchClient({ name, label, type }: Props) {
                 type={type}
                 onChange={(e) => setNcm(e.target.value)}
             />
-        </div>
+            </div>
     );
 }
-
-export default SearchClient;
