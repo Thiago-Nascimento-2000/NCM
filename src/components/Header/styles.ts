@@ -11,11 +11,8 @@ export const Nav = styled.nav`
     margin-top: 1rem;
 
 
-    background: rgba(41, 71, 60, 0.71);
+    background: rgba(41, 71, 60, 0.61);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.7px);
-    -webkit-backdrop-filter: blur(3.7px);
-    border: 1px solid rgba(41, 71, 60, 0.3);
     
     .logoname {
         margin-right: 2rem;

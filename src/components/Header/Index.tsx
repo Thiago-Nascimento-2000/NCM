@@ -13,7 +13,7 @@ import { BiMailSend } from 'react-icons/bi';
 
 function Header() {
   return (
-    <div style={{ width: '100%', padding: '0 100px 0 100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '100%',  display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Container>
         <Nav>
           <div style={{ display: 'flex', alignItems: 'center'}}>
@@ -25,7 +25,7 @@ function Header() {
             <li><NavLink to="/ncm" style={{display:'flex', alignItems:'center', gap:'0.5rem'}} className={({ isActive }) => (isActive ? 'active' : '')}><BiMailSend /> Envio de NCM</NavLink></li>
           </ul>
         </Nav>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '1rem', padding: '1rem 0 1rem 0', borderRadius: '20px', gap: '1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '2rem', padding: '1rem 0 1rem 0', borderRadius: '20px', gap: '1rem' }}>
           <CardInfo icon={<LuUser />} name='Clientes' numberinfo='47' />
           <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo='04/09/25'/>
           <CardInfo icon={<GoRocket />} name='Sem Dados' numberinfo='0'/>

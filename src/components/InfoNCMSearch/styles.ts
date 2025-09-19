@@ -30,6 +30,6 @@ export const ContentInfoNCM = styled.div`
 
     span {
         text-overflow: ellipsis;
-        width: 800px;
+        width: 100%;
     }
 `

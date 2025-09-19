@@ -38,10 +38,6 @@ export function Ncm() {
         }
     }, [search]);
 
-    const closeToast = () => {
-        console.log("fechou!!!!!!!");
-    };
-
     async function SendEmailClient(search: string, email: string) {
         const URL = 'http://192.168.51.252:5000/cliente';
 
@@ -62,7 +58,7 @@ export function Ncm() {
 
         try {
 
-            toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center', onClose: closeToast });
+            toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center'});
 
             const response = await fetch(URL, {
                 method: 'POST',
@@ -110,7 +106,7 @@ export function Ncm() {
                             value={search}
                         />
                         {search && (
-                            <div style={{ backgroundColor: 'white', width: '290px', minHeight: '20px', overflow: 'hidden', position: 'absolute', borderRadius: '10px 10px 10px 10px', marginTop: '0.3rem', padding: '1rem' }}>
+                            <div style={{ backgroundColor: 'white', width: '100%', minHeight: '20px', overflow: 'hidden', position: 'absolute', borderRadius: '10px 10px 10px 10px', marginTop: '0.3rem', padding: '1rem' }}>
                                 {searchData
                                     .filter((cliente) => cliente.toLowerCase().includes(search.toLowerCase()))
                                     .map((item, index) => (
