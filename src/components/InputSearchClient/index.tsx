@@ -1,19 +1,39 @@
-import { InputCliente, Label } from './styles';
+import { InputCliente, InputContainerSearchClient, Label } from './styles';
+import React, { forwardRef } from "react";
 
 type Props = {
-    name: string;
-    label: React.ReactNode;
-    size?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    value?: string;
-    type: string;
+  name: string;
+  label: React.ReactNode;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  type: string;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onClear?: () => void;
 }
 
-export function InputSearchCliente({name, label, size, onChange, value, type}: Props) {
+export const InputSearchCliente = forwardRef<HTMLInputElement, Props>(
+  ({ name, label, onChange, value, type, onFocus, onClear }, ref) => {
     return (
-        <div style={{display: 'flex', flex: '1', flexDirection: 'column', justifyContent: 'center'}}>
-            <Label>{label}</Label>
-            <InputCliente placeholder={name} style={{width: size}} onChange={onChange} value={value} type={type}/>
-        </div>
+      <InputContainerSearchClient>
+        <Label>{label}</Label>
+        <InputCliente
+          placeholder={name}
+          onChange={onChange}
+          value={value}
+          type={type}
+          onFocus={onFocus}
+          ref={ref}
+        />
+        {value && onClear && (
+          <button
+            type="button"
+            onClick={onClear}
+            className='btn-X'
+            >
+            ✕
+          </button>
+        )}
+      </InputContainerSearchClient>
     );
-}
+  }
+);

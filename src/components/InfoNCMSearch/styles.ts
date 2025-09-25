@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerInfoNCM = styled.div`
     display: flex;
-    min-width: 60%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -19,13 +19,12 @@ export const ContentInfoNCM = styled.div`
     padding-left: 1rem;
     background-color: #eaeaea;
     border-radius: 10px;
-    min-width: 100%;
+    width: 100%;
     height: 40px;
     font-size: 20px;
     font-weight: 600;
     color: #272727;
     padding: 0.5rem;
-
     overflow: hidden;
     white-space: nowrap;
 

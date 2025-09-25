@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { ContainerInfoNCM, ContentInfoNCM } from './styles'
 import { Ncm } from '../../ConsumoNCM/ConsumoNCM';
-import { useNcm } from '../Contecto/useNcm';
+import { useNcm } from '../Contexto/useNcm';
 
 type NCMData = {
   Codigo: string;

@@ -10,10 +10,20 @@ export const Nav = styled.nav`
     border-radius: 100px;
     margin-top: 1rem;
     flex-wrap: wrap;
-
-
     background: rgba(41, 71, 60, 0.61);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media(max-width: 1211px) {
+            justify-content: center;
+            width: 100%;
+            display: none;
+        }
+    }
     
     .logoname {
         margin-right: 2rem;
@@ -25,8 +35,6 @@ export const Nav = styled.nav`
         border-radius: 100px;
         height: 60px;
         
-        
-
         &:hover {
             background-color: #39a36bff;
         }
@@ -38,6 +46,11 @@ export const Nav = styled.nav`
         background-color: rgba(151,151,151, 0.34);
         border-radius: 30px;
 
+        @media(max-width: 1211px) {
+            width: 100%;
+            justify-content: space-between;
+        }
+
         li {
             list-style: none;
             a {
@@ -47,6 +60,7 @@ export const Nav = styled.nav`
                 padding: 0.5rem 1.5rem 0.5rem 1.5rem;
                 height: 60px;
                 transition: all 0.3s ease;
+                text-align: center;
             }
         }
     }

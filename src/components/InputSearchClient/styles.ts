@@ -1,5 +1,29 @@
 import styled from "styled-components";
 
+export const InputContainerSearchClient = styled.div`
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+        .btn-X {
+            position: absolute;
+            right: 15px;
+            top: 65%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #999;
+
+            &:hover {
+                color: red;
+            }
+        }
+`
+
 export const InputCliente = styled.input`
     height: 60px;
     border-radius: 10px;

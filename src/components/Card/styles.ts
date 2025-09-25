@@ -6,7 +6,7 @@ export const Card = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    min-width: 280px;
+    min-width: 16rem;
     height: 210px;
     border-radius: 20px;
     z-index: 10;
@@ -17,6 +17,22 @@ export const Card = styled.div`
     backdrop-filter: blur(3.7px);
     -webkit-backdrop-filter: blur(3.7px);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    @media(max-width: 1386px) {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
 
     .containerIcon {
         display: flex;
@@ -45,7 +61,6 @@ export const Title = styled.span`
     font-size: 25px;
     font-weight: 500;
 `;
-
 
 export const Number = styled.span`
     color: #A8FFB2;

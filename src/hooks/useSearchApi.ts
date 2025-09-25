@@ -1,4 +1,3 @@
-// hooks/useSearchApi.ts
 import { useEffect, useState } from "react";
 
 type ApiResponse = {
@@ -18,11 +17,11 @@ export function useSearchApi(search?: string, URL?: string) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(search ? { nome: search } : {}), // sempre manda JSON
+      body: JSON.stringify(search ? { nome: search } : {}),
     })
       .then((res) => res.json())
       .then((data: ApiResponse) => {
-        console.log("API DATA:", data);
+        console.log("CLIENT:", data);
 
         if (Array.isArray(data.names)) {
           setSearchData(data.names);

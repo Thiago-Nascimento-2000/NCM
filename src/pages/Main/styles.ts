@@ -11,4 +11,8 @@ export const MainContainer = styled.div`
     border-radius: 50px 50px 0 0;
     margin-top: -100px;
     z-index: 2;
+
+    .container-info {
+        width: 100%;
+    }
 `;

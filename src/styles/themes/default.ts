@@ -10,6 +10,14 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 500;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
+
+        input[type=number]::-webkit-inner-spin-button { 
+            -webkit-appearance: none;
+        }
+            input[type=number] { 
+                -moz-appearance: textfield;
+                appearance: textfield;
+}
     }
 
     body {

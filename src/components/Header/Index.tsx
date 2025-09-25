@@ -11,9 +11,10 @@ import { GoCheckCircle, GoRocket } from 'react-icons/go';
 import logo from '../../assets/logo.png';
 import namelogo from '../../assets/NCMFinderBranco.png';
 import { useSearchApi } from '../../hooks/useSearchApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-function Header() {
+export function Header() {
+  const [dataat, setDataAt] = useState('');
 
 const URLVPN = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
 const { searchData } = useSearchApi(undefined, URLVPN);
@@ -31,20 +32,25 @@ useEffect(() => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("API DATA CARD:", data);
+      const dataAtJSON = new Date();
+
+      const dia = String(dataAtJSON.getDate()).padStart(2, '0');
+      const mes = String(dataAtJSON.getMonth() + 1).padStart(2, '0');
+      const ano = String(dataAtJSON.getFullYear()).slice(-2);
+
+      setDataAt (`${dia}/${mes}/${ano}`);
+      console.log(dataat);
     })
     .catch((err) => {
       console.error("Erro na API:", err);
     });
 }, []);
 
-
-
   return (
     <Container>
       <div className='Width'>
         <Nav>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className='logo'>
             <img src={logo} />
             <img src={namelogo} className='logoname' />
           </div>
@@ -53,14 +59,12 @@ useEffect(() => {
             <li><NavLink to="/ncm" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className={({ isActive }) => (isActive ? 'active' : '')}><BiMailSend /> Envio de NCM</NavLink></li>
           </ul>
         </Nav>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '2rem', padding: '1rem 0 1rem 0', borderRadius: '20px', gap: '2rem', flexWrap: 'wrap' }}>
+        <div className='Container-Card'>
+          <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo={dataat} />
           <CardInfo icon={<LuUser />} name='Clientes' numberinfo={quantityClient.toString()} />
-          <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo='04/09/25' />
           <CardInfo icon={<GoRocket />} name='Sem Dados' numberinfo='0' />
         </div>
       </div>
     </Container>
   );
 }
-
-export default Header

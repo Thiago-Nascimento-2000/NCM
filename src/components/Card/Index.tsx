@@ -12,8 +12,10 @@ export function CardInfo({ icon, name, numberinfo }: Props) {
       <div className='containerIcon'>
         <Icon>{icon}</Icon>
       </div>
-      <Title>{name}</Title>
-      <Number>{numberinfo}</Number>
+      <div className='info'>
+        <Title>{name}</Title>
+        <Number>{numberinfo}</Number>
+      </div>
     </Card>
   )
 }

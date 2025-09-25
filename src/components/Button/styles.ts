@@ -5,7 +5,7 @@ export const ButtonSearch = styled.button`
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 210px;
+    min-width: 170px;
     height: 60px;
     border-radius: 10px;
     border: none;
@@ -17,6 +17,10 @@ export const ButtonSearch = styled.button`
         cursor: pointer;
         transition: all 0.3s ease;
     }
+
+    @media (max-width: 1150px) {
+        width: 100%;
+    } 
 `;
 
 export const Title = styled.span`

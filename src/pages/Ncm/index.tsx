@@ -7,17 +7,37 @@ import { Container } from "../../components/Container";
 
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchApi } from "../../hooks/useSearchApi";
 
 
 export function Ncm() {
-    
+
     const [search, setSearch] = useState('');
     const [email, setEmail] = useState('');
-    const URL = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
+    const [isOpen, setIsOpen] = useState(false);
+    const ref = useRef<HTMLInputElement>(null);
 
+    const URL = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
     const { searchData } = useSearchApi(undefined, URL);
+
+    useEffect(() => {
+        function handleClickOutside(e: MouseEvent) {
+            if (ref.current && !ref.current.contains(e.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    function selectClient(item: string) {
+        setSearch(item);
+        setIsOpen(false);
+    }
 
     async function SendEmailClient(search: string, email: string) {
 
@@ -40,7 +60,8 @@ export function Ncm() {
 
             toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center' });
 
-            const response = await fetch(URL, {
+            const URLNCM = 'http://192.168.51.252:5000/cliente';
+            const response = await fetch(URLNCM, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nome: search, email: email })
@@ -48,7 +69,7 @@ export function Ncm() {
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw new Error(errorText || 'Erro na requisição');
+                throw new Error(errorText);
             }
 
             toast.dismiss(toastId);
@@ -59,8 +80,11 @@ export function Ncm() {
 
         } catch (error) {
             if (toastId) toast.dismiss(toastId);
+
+            const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+
             console.error('ERRO NA REQUISIÇÃO', error);
-            toast.error('Falha no processo de consulta dos ncms invalidos na loja!', { position: 'top-center', autoClose: 5000 });
+            toast.error(errorMessage, { position: 'top-center', autoClose: 5000 });
         }
     }
 
@@ -76,33 +100,41 @@ export function Ncm() {
         <Container>
             <MainContainer>
                 <div className="Width">
-
-
-
-
                     <div className="ncm">
-                        <div style={{ position: 'relative' }}>
+                        <div ref={ref} className="input-container">
                             <InputSearchCliente
                                 name="Selecione o cliente"
                                 label='Cliente'
                                 type="text"
+                                onFocus={() => setIsOpen(true)}
                                 onChange={handleChangeClient}
                                 value={search}
+                                onClear={() => setSearch('')}
                             />
-                            {search && (
-                                <div style={{ backgroundColor: 'white', width: '100%', maxHeight: '250px', overflow: 'hidden', position: 'absolute', borderRadius: '10px 10px 10px 10px', marginTop: '0.3rem', padding: '1rem' }}>
-                                    {searchData
-                                        .filter((cliente) => cliente.toLowerCase().includes(search.toLowerCase()))
-                                        .map((item, index) => (
-                                            <p style={{ padding: '0.3rem', cursor: 'pointer' }} key={index}>
-                                                {item}
-                                            </p>
-                                        ))}
+                            {search && isOpen && (
+                                <div className="Search">
+                                    {searchData.filter((cliente) =>
+                                        cliente.toLowerCase().includes(search.toLowerCase())
+                                    ).length > 0 ? (
+                                        searchData
+                                            .filter((cliente) =>
+                                                cliente.toLowerCase().includes(search.toLowerCase())
+                                            )
+                                            .map((item, index) => (
+                                                <p
+                                                    onClick={() => selectClient(item)}
+                                                    style={{ padding: '0.3rem', cursor: 'pointer' }}
+                                                    key={index}
+                                                >
+                                                    {item}
+                                                </p>
+                                            ))
+                                    ) : (
+                                        <p style={{ color: 'red' }}>Cliente não encontrado!</p>
+                                    )}
                                 </div>
                             )}
                         </div>
-
-
                         <InputSearchCliente
                             name="Insira o e-mail"
                             type="email"
@@ -116,9 +148,6 @@ export function Ncm() {
                             onClick={() => SendEmailClient(search, email)}
                         />
                     </div>
-
-
-
                     <div className="help-list">
                         <h2>Passos para Realizar o Processo</h2>
                         <br />
@@ -130,7 +159,6 @@ export function Ncm() {
                         </ol>
                     </div>
                 </div>
-
             </MainContainer>
         </Container>
     );

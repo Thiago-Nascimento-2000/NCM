@@ -1,26 +1,25 @@
-
-import { useNcm } from '../Contecto/useNcm';
 import { Input, Label } from "./styles";
 
 type Props = {
     name: string;
+    value?: string;
     label: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type: string;
 }
 
-export function SearchClient({ name, label, type }: Props) {
-    const { ncm, setNcm } = useNcm();
-    console.log("Input NCM", ncm);
+export function SearchClient({ name, value, label, type, onChange }: Props) {
 
     return (
-            <div style={{display: 'flex', flex: '1', flexDirection: 'column', justifyContent: 'center'}}>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
             <Label>{label}</Label>
             <Input
                 placeholder={name}
-                value={ncm}
+                value={value}
                 type={type}
-                onChange={(e) => setNcm(e.target.value)}
+                onChange={(e) => {
+                    onChange?.(e);
+                }}
             />
             </div>
     );
