@@ -7,7 +7,6 @@ type ApiResponse = {
 
 export function useSearchApi(search?: string, URL?: string) {
   const [searchData, setSearchData] = useState<string[]>([]);
-  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     if (!URL) return;
@@ -29,16 +28,12 @@ export function useSearchApi(search?: string, URL?: string) {
           setSearchData([]);
         }
 
-        if (data.message) {
-          setMessage(data.message);
-        }
       })
       .catch((error) => {
         console.error(error);
         setSearchData([]);
-        setMessage("Erro ao buscar clientes");
       });
   }, [search, URL]);
 
-  return { searchData, message };
+  return { searchData };
 }

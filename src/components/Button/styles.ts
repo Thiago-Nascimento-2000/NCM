@@ -18,7 +18,7 @@ export const ButtonSearch = styled.button`
         transition: all 0.3s ease;
     }
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1664px) {
         width: 100%;
     } 
 `;

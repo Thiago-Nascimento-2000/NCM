@@ -14,6 +14,13 @@ export const ContainerInfoNCM = styled.div`
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 `
 
+
+export const StatusSpan = styled.span<{ status: string }>`
+  color: ${({ status }) => (status.includes("Invalido") ? "#D92600" : "black")};
+  font-weight: bold;
+`;
+
+
 export const ContentInfoNCM = styled.div`
     display: flex;
     padding-left: 1rem;

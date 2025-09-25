@@ -14,11 +14,19 @@ import { useSearchApi } from '../../hooks/useSearchApi';
 import { useEffect, useState } from 'react';
 
 export function Header() {
-  const [dataat, setDataAt] = useState('');
+  const [dataat, setDataAt] = useState<string>('...');
+  const [client, setClient] = useState<number | string>('...');
 
-const URLVPN = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
-const { searchData } = useSearchApi(undefined, URLVPN);
-const quantityClient = searchData.length;
+  const URLVPN = 'http://192.168.51.252:5000/atualiza_clientes_vpn';
+  const { searchData } = useSearchApi(undefined, URLVPN);
+
+useEffect(() => {
+  if (searchData.length === 0) {
+    setClient('...');
+  } else {
+    setClient(searchData.length);
+  }
+}, [searchData]);
 
 useEffect(() => {
   const URL = 'http://192.168.51.252:5000/atualiza_json';
@@ -33,16 +41,18 @@ useEffect(() => {
     .then((res) => res.json())
     .then((data) => {
       const dataAtJSON = new Date();
+      
 
       const dia = String(dataAtJSON.getDate()).padStart(2, '0');
       const mes = String(dataAtJSON.getMonth() + 1).padStart(2, '0');
       const ano = String(dataAtJSON.getFullYear()).slice(-2);
 
       setDataAt (`${dia}/${mes}/${ano}`);
-      console.log(dataat);
+      console.log(data);
     })
     .catch((err) => {
       console.error("Erro na API:", err);
+      setDataAt('Falha');
     });
 }, []);
 
@@ -61,7 +71,7 @@ useEffect(() => {
         </Nav>
         <div className='Container-Card'>
           <CardInfo icon={<GoCheckCircle />} name='NCM Atualizados' numberinfo={dataat} />
-          <CardInfo icon={<LuUser />} name='Clientes' numberinfo={quantityClient.toString()} />
+          <CardInfo icon={<LuUser />} name='Clientes' numberinfo={client?.toString()} />
           <CardInfo icon={<GoRocket />} name='Sem Dados' numberinfo='0' />
         </div>
       </div>

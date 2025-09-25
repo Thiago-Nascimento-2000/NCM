@@ -14,5 +14,22 @@ export const MainContainer = styled.div`
 
     .container-info {
         width: 100%;
+        position: relative;
+
+        .btn-X {
+            position: absolute;
+            right: 17px;
+            top: 20%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #999;
+
+            &:hover {
+                color: red;
+            }
+        }
     }
 `;

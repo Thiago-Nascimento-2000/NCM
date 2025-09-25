@@ -54,12 +54,12 @@ export const MainContainer = styled.div`
                     }
                 }
 
-                @media(max-width: 1150px) {
+                @media(max-width: 1664px) {
                     width: 100%;
             }
             }
 
-            @media(max-width: 1150px) {
+            @media(max-width: 1664px) {
                 flex-direction: column;
                 align-items: center;
             }

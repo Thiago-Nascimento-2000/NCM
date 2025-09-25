@@ -3,7 +3,7 @@ import { Card, Icon, Title, Number } from './styles';
 type Props = {
   icon: React.ReactNode;
   name: string;
-  numberinfo: string;
+  numberinfo: string | undefined;
 }
 
 export function CardInfo({ icon, name, numberinfo }: Props) {

@@ -6,9 +6,10 @@ type Props = {
     label: React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type: string;
+    onClear?: () => void;
 }
 
-export function SearchClient({ name, value, label, type, onChange }: Props) {
+export function SearchClient({ name, value, label, type, onChange, onClear }: Props) {
 
     return (
             <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -18,9 +19,18 @@ export function SearchClient({ name, value, label, type, onChange }: Props) {
                 value={value}
                 type={type}
                 onChange={(e) => {
-                    onChange?.(e);
+                onChange?.(e);
                 }}
             />
+            {value && onClear && (
+          <button
+            type="button"
+            onClick={onClear}
+            className='btn-X'
+            >
+            ✕
+          </button>
+        )}
             </div>
     );
 }
