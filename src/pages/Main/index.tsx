@@ -23,7 +23,7 @@ export function Main() {
         <div className="Width">
           <div className="container-info">
             <SearchClient
-              label="Consultar NCM"
+              label="Consultar"
               value={ncm}
               onChange={handleNcm}
               type='number'

@@ -52,12 +52,19 @@ export function Ncm() {
         if (!email) {
             toast.warn('Preencha o campo e-mail antes de continuar!', { position: 'top-center', autoClose: 4000 });
             return;
+        }  if (email) {
+            const isEmail = /\S+@\S+\.\S+/.test(email);
+            if (isEmail) {
+                console.log("É um e-mail válido: ", email);
+            } else {
+                toast.warn('Não é um e-mail válido!', { position: 'top-center', autoClose: 4000 });
+                return;
+            }
         }
 
         let toastId: string | number | null = null;
 
         try {
-
             toastId = toast.loading('Processando requisição, aguarde...', { position: 'top-center' });
 
             const URLNCM = 'http://192.168.51.252:5000/cliente';
@@ -106,6 +113,7 @@ export function Ncm() {
                                 name="Selecione o cliente"
                                 label='Cliente'
                                 type="text"
+                                searchIcon
                                 onFocus={() => setIsOpen(true)}
                                 onChange={handleChangeClient}
                                 value={search}
@@ -139,6 +147,7 @@ export function Ncm() {
                             name="Insira o e-mail"
                             type="email"
                             label='Email'
+                            onClear={() => setEmail('')}
                             onChange={handleChangeEmail}
                             value={email}
                         />

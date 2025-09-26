@@ -11,15 +11,27 @@ export const InputContainerSearchClient = styled.div`
             position: absolute;
             right: 15px;
             top: 65%;
-            transform: translateY(-50%);
+            transform: translateY(-35%);
             background: transparent;
             border: none;
             cursor: pointer;
             font-size: 16px;
             color: #999;
+        }
 
+        .icon-close {
             &:hover {
                 color: red;
+            }
+        }
+
+        .icon-search {
+            position: relative;
+            transform: translateY(2%);
+            cursor: default;
+
+            &:hover {
+                color: #999;
             }
         }
 `

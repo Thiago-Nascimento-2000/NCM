@@ -10,7 +10,7 @@ export const FooterBase = styled.div`
         z-index: 50;
         background-color: #EAEAEA;
         z-index: 1;
-        padding: 12rem 0 2rem 0;
+        padding: 11rem 0 2rem 0;
 
         hr {
             min-width: 70%;
