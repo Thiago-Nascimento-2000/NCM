@@ -18,7 +18,7 @@ export const Nav = styled.nav`
         align-items: center;
         justify-content: center;
 
-        @media(max-width: 1468px) {
+        @media(max-width: 810px) {
             justify-content: center;
             width: 100%;
             display: none;
@@ -46,7 +46,7 @@ export const Nav = styled.nav`
         background-color: rgba(151,151,151, 0.34);
         border-radius: 30px;
 
-        @media(max-width: 1468px) {
+        @media(max-width: 810px) {
             width: 100%;
             justify-content: space-between;
         }
