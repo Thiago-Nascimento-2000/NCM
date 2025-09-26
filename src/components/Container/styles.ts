@@ -8,9 +8,9 @@ export const ContainerHero = styled.div`
     height: 100%;
 
     .Width {
-        width: 50%;
+        width: 850px;
 
-        @media(max-width: 800px) {
+        @media(max-width: 900px) {
             width: 90%;
         }
     }

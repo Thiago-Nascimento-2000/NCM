@@ -22,7 +22,6 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         width: 100%;
-        height: 100%;
         background: #1F2126;
         background: linear-gradient(180deg, rgba(31, 33, 38, 1) 0%, rgba(60, 121, 62, 1) 100%);
         overflow-x: hidden;

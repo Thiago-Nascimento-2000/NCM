@@ -25,7 +25,7 @@ export const Card = styled.div`
         text-align: center;
     }
 
-    @media(max-width: 1664px) {
+    @media(max-width: 900px) {
         width: 100%;
         height: auto;
         flex-direction: row;
